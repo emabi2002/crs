@@ -31,15 +31,18 @@ ON CONFLICT (id) DO NOTHING;
 
 -- ============================================
 -- OFFICERS (From transition data)
+-- Use unique emails with year prefix to avoid conflicts
 -- ============================================
 INSERT INTO officers (id, full_name, email, agency_id, role) VALUES
-    ('0f001819-0000-0000-0000-000000000001', 'Guria Verave', 'guria.verave@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer'),
-    ('0f001819-0000-0000-0000-000000000002', 'Veari Hitolo', 'veari.hitolo@npc.gov.pg', 'a1001819-0000-0000-0000-000000000004', 'Procurement Officer'),
-    ('0f001819-0000-0000-0000-000000000003', 'Geoffrey Kinibo', 'geoffrey.kinibo@npc.gov.pg', 'a1001819-0000-0000-0000-000000000005', 'Procurement Officer'),
-    ('0f001819-0000-0000-0000-000000000004', 'Babaga Naime', 'babaga.naime@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer'),
-    ('0f001819-0000-0000-0000-000000000005', 'Wanom Nothsman', 'wanom.nothsman@npc.gov.pg', 'a1001819-0000-0000-0000-000000000007', 'Procurement Officer'),
-    ('0f001819-0000-0000-0000-000000000006', 'Hudson Leka', 'hudson.leka@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer')
-ON CONFLICT (email) DO NOTHING;
+    ('0f001819-0000-0000-0000-000000000001', 'Guria Verave', 'guria.verave.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer'),
+    ('0f001819-0000-0000-0000-000000000002', 'Veari Hitolo', 'veari.hitolo.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000004', 'Procurement Officer'),
+    ('0f001819-0000-0000-0000-000000000003', 'Geoffrey Kinibo', 'geoffrey.kinibo.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000005', 'Procurement Officer'),
+    ('0f001819-0000-0000-0000-000000000004', 'Babaga Naime', 'babaga.naime.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer'),
+    ('0f001819-0000-0000-0000-000000000005', 'Wanom Nothsman', 'wanom.nothsman.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000007', 'Procurement Officer'),
+    ('0f001819-0000-0000-0000-000000000006', 'Hudson Leka', 'hudson.leka.1819@npc.gov.pg', 'a1001819-0000-0000-0000-000000000001', 'Procurement Officer')
+ON CONFLICT (id) DO UPDATE SET
+    full_name = EXCLUDED.full_name,
+    agency_id = EXCLUDED.agency_id;
 
 -- ============================================
 -- CONTRACTORS (From transition data)
@@ -183,7 +186,7 @@ INSERT INTO contract_awards (id, tender_id, contractor_id, award_date, contract_
 -- COI83/2018 - Koroba Secondary School Emergency
 INSERT INTO tenders (id, tender_no, agency_id, issued_date, closing_datetime, procurement_method, project_title, project_description, estimated_value, funding_source_id, status_code, officer_id, created_by, updated_by) VALUES (
     '10001819-0000-0000-0000-000000000004',
-    'COI83/2018',
+    'COI83-2018',
     'a1001819-0000-0000-0000-000000000003',
     '2018-10-30',
     NULL,
@@ -205,7 +208,7 @@ INSERT INTO contract_awards (id, tender_id, contractor_id, award_date, contract_
     '2019-05-17',
     4184200.64,
     'PGK',
-    'CON-COI83/2018',
+    'CON-COI83-2018',
     '2019-05-17',
     '2020-05-17',
     'Completed'

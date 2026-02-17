@@ -46,17 +46,20 @@ ON CONFLICT (id) DO NOTHING;
 -- ============================================
 -- OFFICERS (From 2021 data)
 -- ============================================
+-- Use unique emails with year prefix to avoid conflicts
 INSERT INTO officers (id, full_name, email, agency_id, role) VALUES
-    ('0f002021-0000-0000-0000-000000000001', 'Frank Hare', 'frank.hare@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000b', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000002', 'Geoffrey Kinibo', 'geoffrey.kinibo@npc.gov.pg', 'a1002021-0000-0000-0000-000000000003', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000003', 'Veari Hitolo', 'veari.hitolo@npc.gov.pg', 'a1002021-0000-0000-0000-000000000013', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000004', 'Wanom Nothsman', 'wanom.nothsman@npc.gov.pg', 'a1002021-0000-0000-0000-000000000005', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000005', 'Hane Hekwa', 'hane.hekwa@npc.gov.pg', 'a1002021-0000-0000-0000-000000000005', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000006', 'Steven Peter', 'steven.peter@npc.gov.pg', 'a1002021-0000-0000-0000-000000000006', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000007', 'Erue Jack', 'erue.jack@npc.gov.pg', 'a1002021-0000-0000-0000-000000000007', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000008', 'Guria Verave', 'guria.verave@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000b', 'Procurement Officer'),
-    ('0f002021-0000-0000-0000-000000000009', 'Agaru Agarobe', 'agaru.agarobe@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000a', 'Procurement Officer')
-ON CONFLICT (email) DO NOTHING;
+    ('0f002021-0000-0000-0000-000000000001', 'Frank Hare', 'frank.hare.2021@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000b', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000002', 'Geoffrey Kinibo', 'geoffrey.kinibo.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000003', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000003', 'Veari Hitolo', 'veari.hitolo.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000013', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000004', 'Wanom Nothsman', 'wanom.nothsman.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000005', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000005', 'Hane Hekwa', 'hane.hekwa.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000005', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000006', 'Steven Peter', 'steven.peter.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000006', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000007', 'Erue Jack', 'erue.jack.2021@npc.gov.pg', 'a1002021-0000-0000-0000-000000000007', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000008', 'Guria Verave', 'guria.verave.2021@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000b', 'Procurement Officer'),
+    ('0f002021-0000-0000-0000-000000000009', 'Agaru Agarobe', 'agaru.agarobe.2021@npc.gov.pg', 'a1002021-0000-0000-0000-00000000000a', 'Procurement Officer')
+ON CONFLICT (id) DO UPDATE SET
+    full_name = EXCLUDED.full_name,
+    agency_id = EXCLUDED.agency_id;
 
 -- ============================================
 -- CONTRACTORS (From 2021 data)
