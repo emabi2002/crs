@@ -1,0 +1,13 @@
+[images]
+  remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
+
+[build]
+  command = "bun run build"
+  publish = ".next"
+
+[build.environment]
+  NEXT_PUBLIC_SUPABASE_URL = "https://kirvkdetpwaanhdkvjal.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtpcnZrZGV0cHdhYW5oZGt2amFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzNTk1NTksImV4cCI6MjA4NTkzNTU1OX0.KhdsEMG9ade4BZTwOH14GssbZrFNN75gtdv5jRlL484"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
