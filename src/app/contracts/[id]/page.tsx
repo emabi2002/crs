@@ -194,10 +194,12 @@ export default function ContractDetailPage() {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm">
-              <Edit className="h-4 w-4 mr-2" />
-              Edit
-            </Button>
+            <Link href={`/contracts/${contractId}/edit`}>
+              <Button variant="outline" size="sm">
+                <Edit className="h-4 w-4 mr-2" />
+                Edit
+              </Button>
+            </Link>
           </div>
         </div>
 

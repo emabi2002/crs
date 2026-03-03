@@ -251,7 +251,15 @@ export default function ContractorDetailPage() {
               )}
             </div>
           </div>
-          <Badge className={getStatusColor(contractor.status)}>{contractor.status}</Badge>
+          <div className="flex items-center gap-2">
+            <Badge className={getStatusColor(contractor.status)}>{contractor.status}</Badge>
+            <Link href={`/contractors/${params.id}/edit`}>
+              <Button variant="outline" size="sm">
+                <Edit className="h-4 w-4 mr-2" />
+                Edit
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
